@@ -6,25 +6,23 @@ m = 2, n = 3 => A(m,n) = 29
 */
 
 
-Console.WriteLine("Введите значение M: ");
-int m = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine("Введите значение N: ");
-int n = Convert.ToInt32(Console.ReadLine());
+int m = InputNumbers("Введите m: ");
+int n = InputNumbers("Введите n: ");
 
-Console.Write($"Результат: {FunctionAccerman(m, n)}");
+int functionAkkerman = Ack(m, n);
 
-int FunctionAccerman(int num1, int num2)
+Console.Write($"Функция Аккермана = {functionAkkerman} ");
+
+int Ack(int m, int n)
 {
-    if (num1 == 0)
-    {
-        return (num2 + 1);
-    }
-    else if (num2 == 0)
-    {
-        return FunctionAccerman(num1 - 1, 1);
-    }
-    else
-    {
-        return FunctionAccerman(num1 - 1, FunctionAccerman(num1, num2 - 1));
-    }
+  if (m == 0) return n + 1;
+  else if (n == 0) return Ack(m - 1, 1);
+  else return Ack(m - 1, Ack(m, n - 1));
+}
+
+int InputNumbers(string input) 
+{
+  Console.Write(input);
+  int output = Convert.ToInt32(Console.ReadLine());
+  return output;
 }
